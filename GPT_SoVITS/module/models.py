@@ -236,7 +236,8 @@ class TextEncoder(nn.Module):
         ).to(y.dtype)
         if test == 1:
             text[:, :] = 0
-        text = self.text_embedding(text).transpose(1, 2)
+        # text = self.text_embedding(text).transpose(1, 2)
+        text = text.transpose(1, 2)[:, :192, :]
         text = self.encoder_text(text * text_mask, text_mask)
         y = self.mrte(y, y_mask, text, text_mask, ge)
 

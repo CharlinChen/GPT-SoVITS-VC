@@ -6,6 +6,8 @@
 
 import os
 import os.path as osp
+import sys
+sys.path.append('./GPT_SoVITS')
 import re
 import logging
 from time import time as ttime
@@ -50,8 +52,8 @@ def get_pretrain_model_path(env_name, log_file, def_path):
     return pretrain_path
 
 
-# device = "cuda" if torch.cuda.is_available() else "cpu"
-device = 'cpu'
+device = "cuda" if torch.cuda.is_available() else "cpu"
+# device = 'cpu'
 
 gpt_path = get_pretrain_model_path('gpt_path', "./gweight.txt", 
                                    "GPT_SoVITS/pretrained_models/s1bert25hz-2kh-longer-epoch=68e-step=50232.ckpt")
